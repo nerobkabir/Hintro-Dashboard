@@ -73,10 +73,8 @@ export default function Dashboard() {
       activeNav={activeNav}
       setActiveNav={setActiveNav}
     >
-      {/* Show dashboard content only when Dashboard nav is active */}
       {activeNav === 'dashboard' ? (
         <>
-          {/* Welcome banner */}
           <div className="welcome-banner fade-up">
             <div>
               <h1 className="welcome-title">
@@ -87,12 +85,10 @@ export default function Dashboard() {
             <button className="btn-primary start-call-btn">Start New Call</button>
           </div>
 
-          {/* Error notice */}
           {error && (
             <div className="error-banner">⚠ {error}</div>
           )}
 
-          {/* Stats grid — 2 cols on mobile, 4 on desktop */}
           <div className="stats-grid">
             {statsCards.map((card) => (
               <StatsCard
@@ -105,7 +101,6 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Recent calls */}
           <RecentCalls calls={calls} loading={loading} />
         </>
       ) : (
