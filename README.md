@@ -30,7 +30,7 @@ The goal was to match the Figma design as closely as possible while keeping the 
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/hintro-dashboard.git
+git clone https://github.com/nerobkabir/Hintro-Dashboard
 cd hintro-dashboard
 npm install
 ```
@@ -182,8 +182,8 @@ vercel
 
 ## Submission
 
-**GitHub Repository:** https://github.com/YOUR_USERNAME/hintro-dashboard
-**Deployed Link:** *(add after deployment)*
+**GitHub Repository:** https://github.com/nerobkabir/Hintro-Dashboard
+**Deployed Link:** https://hintro-dashboard-theta.vercel.app
 **Video Walkthrough:** *(optional)*
 
 **Notes:** The mock API only covers dashboard data, so other sidebar sections show a placeholder. User switching is handled from the sidebar since no auth flow exists in this mock setup. Dark mode was added as an extra feature — it works entirely through CSS custom properties so no components needed individual changes.
