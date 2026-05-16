@@ -41,10 +41,8 @@ function CallRow({ session }) {
         {initial}
       </div>
 
-      {/* Info */}
       <div className="call-row__info">
         <div className="call-row__title">{session.description ?? 'Call Session'}</div>
-        {/* Participant dots */}
         <div className="call-row__participants">
           {(session.participants ?? []).slice(0, 4).map((p, i) => (
             <User key={i} size={11} style={{ color: 'var(--text-light)' }} />
@@ -52,10 +50,8 @@ function CallRow({ session }) {
         </div>
       </div>
 
-      {/* Time */}
       <span className="call-row__time">{formatTime(session.started_at)}</span>
 
-      {/* 3-dot menu */}
       <div style={{ position: 'relative' }}>
         <button
           className="call-row__menu-btn"
@@ -67,7 +63,6 @@ function CallRow({ session }) {
 
         {menuOpen && (
           <>
-            {/* Invisible backdrop to close menu */}
             <div
               style={{ position: 'fixed', inset: 0, zIndex: 5 }}
               onClick={() => setMenuOpen(false)}
@@ -90,7 +85,6 @@ function CallRow({ session }) {
   );
 }
 
-/* ── Skeleton row ───────────────────────────────────── */
 function SkeletonRow() {
   return (
     <div className="call-row">
@@ -104,7 +98,6 @@ function SkeletonRow() {
   );
 }
 
-/* ── Main component ─────────────────────────────────── */
 export default function RecentCalls({ calls, loading }) {
   const grouped = groupCallsByDate(calls);
 
@@ -115,13 +108,10 @@ export default function RecentCalls({ calls, loading }) {
       </div>
 
       <div className="recent-calls__body">
-        {/* Loading state */}
         {loading && [1, 2, 3].map((i) => <SkeletonRow key={i} />)}
 
-        {/* Empty state */}
         {!loading && calls.length === 0 && <EmptyState />}
 
-        {/* Populated list grouped by date */}
         {!loading && grouped.map(({ label, calls: group }) => (
           <div key={label}>
             <div className="date-header">{label}</div>
