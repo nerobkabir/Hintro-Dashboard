@@ -46,7 +46,6 @@ export default function Header({ profile, userId, onLogoutClick, onMenuClick }) 
 
   return (
     <header className="app-header">
-      {/* Left: hamburger + title */}
       <div className="header-left">
         <button className="hamburger" onClick={onMenuClick} aria-label="Open menu">
           <Menu size={20} />
@@ -54,7 +53,6 @@ export default function Header({ profile, userId, onLogoutClick, onMenuClick }) 
         <h2 className="header-title">Dashboard</h2>
       </div>
 
-      {/* Right: Watch Tutorial + toggle + avatar */}
       <div className="header-right">
 
         {/* Watch Tutorial */}
@@ -105,7 +103,6 @@ export default function Header({ profile, userId, onLogoutClick, onMenuClick }) 
           {isDark ? <Sun size={17} /> : <Moon size={17} />}
         </button>
 
-        {/* Avatar + dropdown */}
         <div style={{ position: 'relative' }} ref={dropdownRef}>
           <button
             className="avatar-btn"
