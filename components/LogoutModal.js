@@ -4,7 +4,6 @@ export default function LogoutModal({ onCancel, onConfirm }) {
   return (
     <div className="modal-overlay" onClick={onCancel}>
       <div className="modal-box" style={{ maxWidth: 380 }} onClick={(e) => e.stopPropagation()}>
-        {/* Icon */}
         <div
           style={{
             width: 46,
@@ -27,7 +26,6 @@ export default function LogoutModal({ onCancel, onConfirm }) {
           You can log back in anytime to continue your meetings with Hintro.
         </p>
 
-        {/* Buttons */}
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={onCancel}
