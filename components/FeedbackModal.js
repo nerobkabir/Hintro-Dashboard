@@ -4,7 +4,7 @@ import { saveFeedback, getFeedbackHistory } from '../lib/utils';
 
 const CATEGORIES = ['General', 'Bug Report', 'Feature Request', 'UI/UX', 'Performance'];
 
-// ── Feedback submit form ─────────────────────────────────────────────────────
+// Feedback submit form 
 function FeedbackForm({ onSubmit, onClose }) {
   const [category, setCategory] = useState('General');
   const [message, setMessage] = useState('');
@@ -26,7 +26,6 @@ function FeedbackForm({ onSubmit, onClose }) {
     saveFeedback(entry);
     setSubmitted(true);
 
-    // Auto close after 1.5s
     setTimeout(() => {
       onSubmit();
       onClose();
@@ -60,7 +59,6 @@ function FeedbackForm({ onSubmit, onClose }) {
 
   return (
     <div>
-      {/* Star rating */}
       <div style={{ display: 'flex', gap: 6, marginBottom: '1.1rem' }}>
         {[1, 2, 3, 4, 5].map((star) => (
           <button
@@ -87,7 +85,6 @@ function FeedbackForm({ onSubmit, onClose }) {
         ))}
       </div>
 
-      {/* Category selector */}
       <div style={{ marginBottom: '1rem' }}>
         <label style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-muted)', display: 'block', marginBottom: 6 }}>
           Category
@@ -115,7 +112,6 @@ function FeedbackForm({ onSubmit, onClose }) {
         </div>
       </div>
 
-      {/* Message textarea */}
       <div style={{ marginBottom: '1.25rem' }}>
         <label style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-muted)', display: 'block', marginBottom: 6 }}>
           Your feedback
@@ -143,7 +139,6 @@ function FeedbackForm({ onSubmit, onClose }) {
         />
       </div>
 
-      {/* Submit */}
       <button
         onClick={handleSubmit}
         disabled={!message.trim()}
@@ -171,7 +166,7 @@ function FeedbackForm({ onSubmit, onClose }) {
   );
 }
 
-// ── Feedback history list ─────────────────────────────────────────────────────
+//  Feedback history list 
 function FeedbackHistory() {
   const history = getFeedbackHistory();
 
@@ -231,14 +226,13 @@ function FeedbackHistory() {
   );
 }
 
-// ── Modal wrapper ─────────────────────────────────────────────────────────────
+// Modal wrapper 
 export default function FeedbackModal({ onClose, defaultView = 'form' }) {
-  const [view, setView] = useState(defaultView); // 'form' | 'history'
+  const [view, setView] = useState(defaultView); 
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', gap: 8 }}>
             <button
