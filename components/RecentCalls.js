@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { CalendarDays, MoreVertical, User } from 'lucide-react';
 import { groupCallsByDate, formatTime } from '../lib/utils';
 
-/* ── Empty state ────────────────────────────────────── */
 function EmptyState() {
   return (
     <div className="empty-state">
@@ -21,11 +20,10 @@ function EmptyState() {
   );
 }
 
-/* ── Single call row ────────────────────────────────── */
+
 function CallRow({ session }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Pick avatar color from client name initial char code
   const palette = [
     { bg: 'var(--stat-purple-bg)', color: 'var(--stat-purple-icon)' },
     { bg: 'var(--stat-teal-bg)',   color: 'var(--stat-teal-icon)'   },
@@ -39,7 +37,6 @@ function CallRow({ session }) {
 
   return (
     <div className="call-row">
-      {/* Avatar */}
       <div className="call-row__avatar" style={{ background: bg, color }}>
         {initial}
       </div>
