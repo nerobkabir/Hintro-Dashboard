@@ -104,7 +104,6 @@ export default function Dashboard() {
           <RecentCalls calls={calls} loading={loading} />
         </>
       ) : (
-        // All other nav sections → professional coming soon page
         <ComingSoon section={activeNav} />
       )}
     </Layout>
