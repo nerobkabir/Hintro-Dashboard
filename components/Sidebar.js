@@ -22,19 +22,17 @@ export default function Sidebar({
 
   const handleNav = (id) => {
     setActiveNav(id);
-    onClose(); // close mobile drawer
+    onClose(); 
   };
 
   return (
     <>
-      {/* Mobile backdrop */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/40 z-30 md:hidden" onClick={onClose} />
       )}
 
       <aside className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
 
-        {/* ── Logo ── */}
         <div className="sidebar__logo">
           <span className="sidebar__brand">Hintro</span>
           <button className="sidebar__close md:hidden" onClick={onClose} aria-label="Close menu">
@@ -42,7 +40,6 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* ── Navigation ── */}
         <nav className="sidebar__nav">
           {NAV_ITEMS.map(({ id, label, icon: Icon, hasInfo }) => {
             const active = activeNav === id;
@@ -61,7 +58,6 @@ export default function Sidebar({
           })}
         </nav>
 
-        {/* ── Bottom section ── */}
         <div className="sidebar__bottom">
 
           <button className="bottom-btn" onClick={() => { onFeedbackHistoryClick(); onClose(); }}>
@@ -76,7 +72,6 @@ export default function Sidebar({
 
           <button className="upgrade-btn">Upgrade</button>
 
-          {/* User switcher */}
           <div className="user-switcher">
             <div className="user-switcher__info">
               <div
