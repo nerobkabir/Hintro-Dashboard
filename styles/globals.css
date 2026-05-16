@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ═══════════════════════════════════════════
-   Design tokens — all colors via CSS vars
-   Never use hardcoded hex values in components
-   ═══════════════════════════════════════════ */
 :root {
   /* Brand */
   --primary:       #4f46e5;
   --primary-light: #eef2ff;
   --primary-hover: #4338ca;
 
-  /* Layout */
+  /* Layout dimensions */
   --sidebar-width: 210px;
   --header-height: 60px;
 
-  /* Surfaces */
+  /* Page surfaces */
   --bg-main:    #f8fafc;
   --bg-sidebar: #ffffff;
   --bg-card:    #ffffff;
 
-  /* Text */
+  /* Text hierarchy */
   --text-primary: #1e293b;
   --text-muted:   #64748b;
   --text-light:   #94a3b8;
@@ -30,7 +26,7 @@
   --border:       #e2e8f0;
   --border-hover: #cbd5e1;
 
-  /* Stat card accent pairs */
+  /* Stat card colors — each card has a background + icon color pair */
   --stat-pink-bg:    #fee2e2;
   --stat-pink-icon:  #dc2626;
   --stat-teal-bg:    #ccfbf1;
@@ -46,9 +42,7 @@
   --radius:    10px;
 }
 
-/* ═══════════════════════════════════════════
-   Base reset
-   ═══════════════════════════════════════════ */
+/* Base reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 body {
@@ -58,18 +52,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Thin scrollbar */
+/* Thin scrollbar so it doesn't take up visual space */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 10px; }
 
-/* ═══════════════════════════════════════════
-   Animations
-   ═══════════════════════════════════════════ */
+
+/* Animations */
+
+/* Content entering the screen — used on stat cards and recent calls */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Loading skeleton pulse */
 @keyframes shimmer {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.45; }
@@ -82,9 +79,10 @@ body {
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
-/* ═══════════════════════════════════════════
-   Utility classes
-   ═══════════════════════════════════════════ */
+
+/* Shared utility classes */
+
+/* White card with border and subtle shadow */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -92,6 +90,7 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* Dark filled button — used for primary actions like "Start New Call" */
 .btn-primary {
   background: #0f172a;
   color: #fff;
@@ -106,6 +105,7 @@ body {
 }
 .btn-primary:hover { background: #1e293b; }
 
+/* Ghost button with border — used for secondary actions */
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
@@ -123,9 +123,9 @@ body {
 }
 .btn-outline:hover { border-color: var(--border-hover); background: #f8fafc; }
 
-/* ═══════════════════════════════════════════
-   Sidebar
-   ═══════════════════════════════════════════ */
+
+/* Sidebar */
+
 .sidebar {
   position: fixed;
   top: 0; left: 0;
@@ -141,7 +141,6 @@ body {
 }
 .sidebar--open { transform: translateX(0); }
 
-/* Desktop: always visible */
 @media (min-width: 768px) {
   .sidebar { transform: translateX(0); }
 }
@@ -176,7 +175,7 @@ body {
   padding: 10px 10px;
 }
 
-/* Nav item */
+/* Individual nav button — active state uses brand color */
 .nav-item {
   display: flex;
   align-items: center;
@@ -210,7 +209,7 @@ body {
 .nav-item__label { flex: 1; }
 .nav-item__info  { color: var(--text-light); flex-shrink: 0; }
 
-/* Sidebar bottom */
+/* Bottom section holds Feedback, Upgrade, and user switcher */
 .sidebar__bottom {
   border-top: 1px solid var(--border);
   padding: 12px 10px 16px;
@@ -254,7 +253,7 @@ body {
 }
 .upgrade-btn:hover { background: #0f172a; }
 
-/* User switcher card */
+/* User switcher — shows which user is active and lets you toggle between u1 and u2 */
 .user-switcher {
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -304,15 +303,14 @@ body {
 }
 .user-switcher__btn:hover { background: var(--primary-light); color: var(--primary); }
 
-/* ═══════════════════════════════════════════
-   Main content area
-   ═══════════════════════════════════════════ */
+
+/* Main content area */
+
 .main-area {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* No left margin on mobile; sidebar overlays */
 }
 @media (min-width: 768px) {
   .main-area { margin-left: var(--sidebar-width); }
@@ -333,9 +331,9 @@ body {
   margin: 0 auto;
 }
 
-/* ═══════════════════════════════════════════
-   Dashboard — Welcome banner
-   ═══════════════════════════════════════════ */
+
+/* Dashboard — Welcome banner */
+
 .welcome-banner {
   display: flex;
   align-items: flex-start;
@@ -355,13 +353,13 @@ body {
   font-size: 0.83rem;
   color: var(--text-muted);
 }
-/* On mobile, push Start Call button below text */
+
+/* Stack the button below the text on small screens */
 @media (max-width: 480px) {
   .welcome-banner { flex-direction: column; }
   .start-call-btn { width: 100%; }
 }
 
-/* Error banner */
 .error-banner {
   background: #fee2e2;
   color: #dc2626;
@@ -371,9 +369,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* ═══════════════════════════════════════════
-   Stats grid — 2 cols mobile, 4 cols desktop
-   ═══════════════════════════════════════════ */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -384,9 +380,9 @@ body {
   .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 }
 
-/* ═══════════════════════════════════════════
-   Modal
-   ═══════════════════════════════════════════ */
+
+/* Modal */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -407,9 +403,9 @@ body {
   animation: fadeUp 0.2s ease;
 }
 
-/* ═══════════════════════════════════════════
-   Header
-   ═══════════════════════════════════════════ */
+
+/* Header */
+
 .app-header {
   height: var(--header-height);
   background: var(--bg-sidebar);
@@ -439,7 +435,7 @@ body {
   gap: 10px;
 }
 
-/* Hamburger — visible only on mobile */
+/* Only show hamburger on mobile — desktop has the persistent sidebar */
 .hamburger {
   display: flex;
   background: none;
@@ -451,11 +447,11 @@ body {
 }
 @media (min-width: 768px) { .hamburger { display: none; } }
 
-/* Watch Tutorial — hidden on small screens */
+/* Watch Tutorial link — hidden on very small screens to keep the header clean */
 .watch-tutorial-btn { display: none; }
 @media (min-width: 480px) { .watch-tutorial-btn { display: flex; font-size: 0.8rem; } }
 
-/* Avatar */
+/* Avatar circle with user initials */
 .avatar-wrap     { position: relative; }
 .avatar-btn {
   display: flex;
@@ -484,7 +480,7 @@ body {
   transition: transform 0.15s ease;
 }
 
-/* Dropdown */
+/* Dropdown menu that appears when clicking the avatar */
 .dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -527,15 +523,16 @@ body {
 }
 .dropdown-logout:hover { background: #fff5f5; }
 
-/* ═══════════════════════════════════════════
-   Stats card
-   ═══════════════════════════════════════════ */
+
+/* Stats card */
+
 .stats-card {
   padding: 1rem 1.1rem;
   display: flex;
   align-items: center;
   gap: 12px;
 }
+/* Colored circle behind the icon */
 .stats-card__icon {
   width: 40px;
   height: 40px;
@@ -561,9 +558,9 @@ body {
   line-height: 1.2;
 }
 
-/* ═══════════════════════════════════════════
-   Recent Calls
-   ═══════════════════════════════════════════ */
+
+/* Recent Calls */
+
 .recent-calls { margin-top: 1.25rem; }
 .recent-calls__header {
   padding: 0.9rem 1.25rem;
@@ -576,7 +573,7 @@ body {
 }
 .recent-calls__body { padding: 0 1.25rem; }
 
-/* Date group header */
+/* Date label that groups calls — e.g. "April 29th" */
 .date-header {
   font-size: 0.75rem;
   font-weight: 600;
@@ -585,7 +582,7 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* Call row */
+/* Single call row */
 .call-row {
   display: flex;
   align-items: center;
@@ -596,6 +593,7 @@ body {
 }
 .call-row:last-child { border-bottom: none; }
 
+/* Colored square with the client's initial letter */
 .call-row__avatar {
   width: 36px;
   height: 36px;
@@ -625,7 +623,7 @@ body {
   white-space: nowrap;
 }
 
-/* 3-dot menu */
+/* Three-dot button that opens the context menu */
 .call-row__menu-btn {
   background: none;
   border: none;
@@ -668,9 +666,8 @@ body {
 .call-row__dropdown-item--danger { color: #dc2626; }
 .call-row__dropdown-item--danger:hover { background: #fff5f5; }
 
-/* ═══════════════════════════════════════════
-   Empty state
-   ═══════════════════════════════════════════ */
+
+/* Empty state — shown when u1 has no call history */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -701,14 +698,9 @@ body {
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════
-   Dark mode
-   Works by overriding CSS variables on html.
-   Every component uses var() so they all
-   adapt automatically — nothing else to change.
-   ═══════════════════════════════════════════ */
 
-/* Smooth theme transition on key surfaces */
+
+/* Smooth transition so the switch doesn't feel jarring */
 body,
 .card,
 .app-header,
@@ -721,35 +713,30 @@ body,
 }
 
 html[data-theme="dark"] {
-  /* Surfaces */
   --bg-main:    #0f172a;
   --bg-sidebar: #1e293b;
   --bg-card:    #1e293b;
 
-  /* Text */
   --text-primary: #f1f5f9;
   --text-muted:   #94a3b8;
   --text-light:   #64748b;
 
-  /* Borders */
   --border:       #334155;
   --border-hover: #475569;
 
-  /* Brand */
   --primary-light: #1e1b4b;
 
-  /* Stat card backgrounds — muted in dark */
+  /* Stat card backgrounds are darkened so the icons still pop */
   --stat-pink-bg:   #450a0a;
   --stat-teal-bg:   #042f2e;
   --stat-green-bg:  #052e16;
   --stat-purple-bg: #2e1065;
 
-  /* Deeper shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* Interactive elements that need explicit dark overrides */
+/* Elements that need explicit overrides beyond variable changes */
 html[data-theme="dark"] .nav-item:hover      { background: #334155; color: var(--text-primary); }
 html[data-theme="dark"] .bottom-btn:hover    { background: #334155; color: var(--text-primary); }
 html[data-theme="dark"] .upgrade-btn         { background: #334155; }
