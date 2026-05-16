@@ -13,12 +13,10 @@ export default function StatsCard({ label, value, iconType, loading }) {
 
   return (
     <div className="card stats-card fade-up">
-      {/* Colored icon bubble */}
       <div className="stats-card__icon" style={{ background: cfg.bg }}>
         <Icon size={18} style={{ color: cfg.color }} strokeWidth={2} />
       </div>
 
-      {/* Label + value */}
       <div className="stats-card__body">
         <div className="stats-card__label">{label}</div>
         {loading
