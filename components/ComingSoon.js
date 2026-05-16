@@ -7,7 +7,6 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
-// Config for each section that isn't built yet
 const SECTION_CONFIG = {
   'call-insights': {
     icon: Phone,
@@ -56,7 +55,6 @@ export default function ComingSoon({ section }) {
   return (
     <div className="fade-up" style={{ maxWidth: 540, margin: '3rem auto 0', textAlign: 'center', padding: '0 1rem' }}>
 
-      {/* Icon bubble */}
       <div
         style={{
           width: 72,
@@ -72,7 +70,6 @@ export default function ComingSoon({ section }) {
         <Icon size={30} style={{ color: config.color }} strokeWidth={1.8} />
       </div>
 
-      {/* Coming soon badge */}
       <div
         style={{
           display: 'inline-flex',
@@ -93,7 +90,6 @@ export default function ComingSoon({ section }) {
         Coming Soon
       </div>
 
-      {/* Title */}
       <h2
         style={{
           fontWeight: 700,
@@ -106,7 +102,6 @@ export default function ComingSoon({ section }) {
         {config.title}
       </h2>
 
-      {/* Description */}
       <p
         style={{
           fontSize: '0.9rem',
@@ -118,7 +113,6 @@ export default function ComingSoon({ section }) {
         {config.description}
       </p>
 
-      {/* Feature pills */}
       <div
         style={{
           display: 'flex',
@@ -157,7 +151,6 @@ export default function ComingSoon({ section }) {
         ))}
       </div>
 
-      {/* CTA */}
       <a
         href="https://www.hintro.ai"
         target="_blank"
